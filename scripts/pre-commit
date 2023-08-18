@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+SKIP_CHECK_FILE=skip.checks.flag
+
+set -e
+
+# put here all commands that should generate code before committing
+run_codegen() {
+  make swag
+}
+
+# put here all checks that should be run before committing
+run_checks() {
+  make lint
+  make build
+  make test
+}
+
+# run codegeneration
+run_codegen
+
+# run checks
+test -f $SKIP_CHECK_FILE && echo "skipping checks"
+test -f $SKIP_CHECK_FILE || run_checks
+rm -rf $SKIP_CHECK_FILE
+
+echo

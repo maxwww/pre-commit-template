@@ -1,0 +1,9 @@
+# https://jorisroovers.com/gitlint/latest/configuration/gitlint_file/
+[general]
+ignore=body-is-missing
+
+[title-max-length]
+line-length=100
+
+[title-min-length]
+min-length=5

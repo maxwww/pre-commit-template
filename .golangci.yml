@@ -1,0 +1,11 @@
+linters:
+  enable:
+    - depguard
+
+linters-settings:
+  depguard:
+    rules:
+      logger:
+        deny:
+          - pkg: "github.com/sirupsen/logrus"
+            desc: logging is allowed only by logger.Log
